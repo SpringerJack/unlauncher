@@ -12,7 +12,7 @@ plugins {
 android {
     compileSdkVersion(30)
     defaultConfig {
-        applicationId = "com.jkuester.unlauncher"
+        applicationId = "com.springerjack.lilauncher"
         minSdkVersion(21)
         targetSdkVersion(30)
         versionName = "1.3.0"

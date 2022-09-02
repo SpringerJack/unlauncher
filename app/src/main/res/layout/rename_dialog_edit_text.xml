@@ -16,5 +16,6 @@
         android:ems="10"
         android:imeOptions="actionDone"
         android:inputType="text|textCapWords"
+        android:textAlignment="center"
         tools:ignore="Autofill,LabelFor" />
 </LinearLayout>

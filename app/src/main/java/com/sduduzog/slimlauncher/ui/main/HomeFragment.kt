@@ -14,7 +14,6 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.motion.widget.MotionLayout.TransitionListener
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.jkuester.unlauncher.datastore.UnlauncherApp
@@ -45,22 +44,16 @@ class HomeFragment(private val viewModel: MainViewModel) : BaseFragment(), OnLau
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val adapter1 = HomeAdapter(this)
-        val adapter2 = HomeAdapter(this)
-        home_fragment_list.adapter = adapter1
-        home_fragment_list_exp.adapter = adapter2
+        val adapter = HomeAdapter(this)
+        //val adapter2 = HomeAdapter(this)
+        home_fragment_list.adapter = adapter
+        //home_fragment_list_exp.adapter = adapter2
 
         val unlauncherAppsRepo = getUnlauncherDataSource().unlauncherAppsRepo
 
-        viewModel.apps.observe(viewLifecycleOwner, Observer { list ->
+        viewModel.apps.observe(viewLifecycleOwner, { list ->
             list?.let { apps ->
-                adapter1.setItems(apps.filter {
-                    it.sortingIndex < 3
-                })
-                adapter2.setItems(apps.filter {
-                    it.sortingIndex >= 3
-                })
-
+                adapter.setItems(apps)
                 // Set the home apps in the Unlauncher data
                 lifecycleScope.launch {
                     unlauncherAppsRepo.setHomeApps(apps)

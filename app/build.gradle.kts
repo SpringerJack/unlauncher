@@ -15,8 +15,8 @@ android {
         applicationId = "com.springerjack.lilauncher"
         minSdkVersion(21)
         targetSdkVersion(30)
-        versionName = "1.3.0"
-        versionCode = 11
+        versionName = "1.4.0"
+        versionCode = 15
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
 //        signingConfigs {
